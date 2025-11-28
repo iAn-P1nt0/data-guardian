@@ -1,4 +1,4 @@
-"""Public interface for the data_guardian package."""
+"""Public interface for the pandera_unified_validator package."""
 
 from .core.schema import (
     ColumnSpec,

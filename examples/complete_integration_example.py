@@ -1,7 +1,7 @@
 """
 Complete Integration Example: E-commerce Order Processing Pipeline
 
-This example demonstrates all major features of data-guardian in a realistic
+This example demonstrates all major features of pandera-unified-validator in a realistic
 production-like scenario for validating e-commerce order data.
 """
 
@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from data_guardian import (
+from pandera_unified_validator import (
     SchemaBuilder,
     StreamingValidator,
     UnifiedValidator,
@@ -18,7 +18,7 @@ from data_guardian import (
     configure_logging,
     get_logger,
 )
-from data_guardian.profiling import DataProfiler, infer_constraints_from_profile
+from pandera_unified_validator.profiling import DataProfiler, infer_constraints_from_profile
 
 # Configure logging
 configure_logging(level="INFO", json_logs=False, include_timestamp=True)
@@ -326,7 +326,7 @@ async def main():
     logger.info("integration_example_started")
 
     print("=" * 80)
-    print("DATA-GUARDIAN COMPLETE INTEGRATION EXAMPLE")
+    print("PANDERA-UNIFIED-VALIDATOR COMPLETE INTEGRATION EXAMPLE")
     print("=" * 80)
 
     # Step 1: Create schema
@@ -351,7 +351,7 @@ async def main():
 
     # Step 6: Export metrics
     print("\n[6] Exporting metrics...")
-    from data_guardian import MetricsExporter
+    from pandera_unified_validator import MetricsExporter
 
     prometheus_metrics = MetricsExporter.to_prometheus(streaming_result.metrics)
     output_dir = Path("output")

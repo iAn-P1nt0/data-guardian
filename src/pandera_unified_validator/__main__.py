@@ -1,4 +1,4 @@
-"""Command-line interface for data-guardian."""
+"""Command-line interface for pandera-unified-validator."""
 
 from __future__ import annotations
 
@@ -22,8 +22,8 @@ from . import (
 from .profiling import DataProfiler
 
 app = typer.Typer(
-    name="data-guardian",
-    help="Advanced data validation and profiling CLI",
+    name="puv",
+    help="pandera-unified-validator: Advanced data validation and profiling CLI",
     add_completion=False,
 )
 console = Console()
@@ -32,7 +32,7 @@ console = Console()
 def version_callback(value: bool) -> None:
     """Print version and exit."""
     if value:
-        console.print(f"data-guardian version {__version__}")
+        console.print(f"pandera-unified-validator version {__version__}")
         raise typer.Exit()
 
 
@@ -47,7 +47,7 @@ def main(
         is_eager=True,
     ),
 ) -> None:
-    """data-guardian: Advanced data validation and profiling."""
+    """pandera-unified-validator: Advanced data validation and profiling."""
     pass
 
 
@@ -91,7 +91,7 @@ def validate(
     Validate a CSV file against a schema.
 
     Example:
-        data-guardian validate data.csv schema.json --auto-fix --output report.html
+        puv validate data.csv schema.json --auto-fix --output report.html
     """
     try:
         # Load schema
@@ -226,7 +226,7 @@ def profile(
     Generate a data profile report.
 
     Example:
-        data-guardian profile data.csv --output profile.html --infer-schema --schema-output schema.json
+        puv profile data.csv --output profile.html --infer-schema --schema-output schema.json
     """
     try:
         console.print(f"[cyan]Loading data from {file}...[/cyan]")
@@ -297,7 +297,7 @@ def schema(
     Generate a validation schema from a CSV file.
 
     Example:
-        data-guardian schema data.csv --output schema.json
+        puv schema data.csv --output schema.json
     """
     try:
         console.print(f"[cyan]Loading data from {data}...[/cyan]")

@@ -45,7 +45,7 @@ pip install pandera-unified-validator[all]
 
 ```python
 import pandas as pd
-from data_guardian import SchemaBuilder, UnifiedValidator
+from pandera_unified_validator import SchemaBuilder, UnifiedValidator
 
 # Define schema with fluent API
 schema = (
@@ -76,7 +76,7 @@ print(f"Errors: {len(result.errors)}")
 print(f"Suggestions: {len(result.suggestions)}")
 
 # Generate beautiful reports
-from data_guardian import ValidationReporter
+from pandera_unified_validator import ValidationReporter
 
 reporter = ValidationReporter(result)
 reporter.to_console(verbose=True)  # Rich console output
@@ -101,7 +101,7 @@ reporter.to_json("report.json")     # JSON export
 ## Real-World Example: E-commerce Product Validation
 
 ```python
-from data_guardian import UnifiedValidator, SchemaBuilder, ValidationReporter
+from pandera_unified_validator import UnifiedValidator, SchemaBuilder, ValidationReporter
 
 # Define comprehensive product schema
 schema = (
@@ -139,7 +139,7 @@ if result.suggestions:
 ## Streaming Validation for Large Files
 
 ```python
-from data_guardian import StreamingValidator
+from pandera_unified_validator import StreamingValidator
 
 # Validate large CSV without loading into memory
 schema = SchemaBuilder("transactions").add_column("amount", float, ge=0).build()
@@ -177,7 +177,7 @@ cd pandera-unified-validator
 pip install -e ".[dev]"
 
 # Run tests
-pytest tests/ -v --cov=src/data_guardian
+pytest tests/ -v --cov=src/pandera_unified_validator
 
 # Run linting
 ruff check src/ tests/

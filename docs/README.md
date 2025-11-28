@@ -1,6 +1,6 @@
 # Architecture Overview
 
-`data-guardian` is organized around three layers:
+`pandera-unified-validator` is organized around three layers:
 
 1. **Core** – `ValidationSchema` models combine Pydantic record checks with Pandera dataframe
    schemas. `DataGuardianValidator` orchestrates backend selection based on the incoming frame
@@ -20,8 +20,8 @@ Implement a new backend by conforming to `ValidationBackend` and registering it 
 `DataGuardianValidator` instance:
 
 ```python
-from data_guardian.core import ValidationBackend
-from data_guardian.utils import ValidationReport
+from pandera_unified_validator.core import ValidationBackend
+from pandera_unified_validator.utils import ValidationReport
 
 
 class DaskBackend(ValidationBackend["dask.dataframe.DataFrame"]):

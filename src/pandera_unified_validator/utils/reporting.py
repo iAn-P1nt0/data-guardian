@@ -309,29 +309,29 @@ class MetricsExporter:
             Prometheus-formatted metrics string
         """
         lines = [
-            "# HELP data_guardian_total_rows Total rows validated",
-            "# TYPE data_guardian_total_rows counter",
-            f"data_guardian_total_rows {metrics.total_rows}",
+            "# HELP puv_total_rows Total rows validated",
+            "# TYPE puv_total_rows counter",
+            f"puv_total_rows {metrics.total_rows}",
             "",
-            "# HELP data_guardian_valid_rows Valid rows count",
-            "# TYPE data_guardian_valid_rows counter",
-            f"data_guardian_valid_rows {metrics.valid_rows}",
+            "# HELP puv_valid_rows Valid rows count",
+            "# TYPE puv_valid_rows counter",
+            f"puv_valid_rows {metrics.valid_rows}",
             "",
-            "# HELP data_guardian_invalid_rows Invalid rows count",
-            "# TYPE data_guardian_invalid_rows counter",
-            f"data_guardian_invalid_rows {metrics.invalid_rows}",
+            "# HELP puv_invalid_rows Invalid rows count",
+            "# TYPE puv_invalid_rows counter",
+            f"puv_invalid_rows {metrics.invalid_rows}",
             "",
-            "# HELP data_guardian_error_rate Error rate (0.0-1.0)",
-            "# TYPE data_guardian_error_rate gauge",
-            f"data_guardian_error_rate {metrics.error_rate:.4f}",
+            "# HELP puv_error_rate Error rate (0.0-1.0)",
+            "# TYPE puv_error_rate gauge",
+            f"puv_error_rate {metrics.error_rate:.4f}",
             "",
-            "# HELP data_guardian_processing_time_seconds Processing time in seconds",
-            "# TYPE data_guardian_processing_time_seconds gauge",
-            f"data_guardian_processing_time_seconds {metrics.processing_time:.3f}",
+            "# HELP puv_processing_time_seconds Processing time in seconds",
+            "# TYPE puv_processing_time_seconds gauge",
+            f"puv_processing_time_seconds {metrics.processing_time:.3f}",
             "",
-            "# HELP data_guardian_chunks_processed Total chunks processed",
-            "# TYPE data_guardian_chunks_processed counter",
-            f"data_guardian_chunks_processed {metrics.chunks_processed}",
+            "# HELP puv_chunks_processed Total chunks processed",
+            "# TYPE puv_chunks_processed counter",
+            f"puv_chunks_processed {metrics.chunks_processed}",
             "",
         ]
 
@@ -339,7 +339,7 @@ class MetricsExporter:
         for error_key, count in list(metrics.common_errors.items())[:10]:
             error_label = error_key.replace('"', '\\"')[:50]
             lines.extend([
-                f'data_guardian_common_errors{{error="{error_label}"}} {count}',
+                f'puv_common_errors{{error="{error_label}"}} {count}',
             ])
 
         return "\n".join(lines)
@@ -357,47 +357,47 @@ class MetricsExporter:
         """
         return {
             "resource": {
-                "service.name": "data-guardian",
+                "service.name": "pandera-unified-validator",
                 "service.version": "0.1.0",
             },
             "metrics": [
                 {
-                    "name": "data_guardian.total_rows",
+                    "name": "puv.total_rows",
                     "description": "Total rows validated",
                     "unit": "rows",
                     "type": "counter",
                     "value": metrics.total_rows,
                 },
                 {
-                    "name": "data_guardian.valid_rows",
+                    "name": "puv.valid_rows",
                     "description": "Valid rows count",
                     "unit": "rows",
                     "type": "counter",
                     "value": metrics.valid_rows,
                 },
                 {
-                    "name": "data_guardian.invalid_rows",
+                    "name": "puv.invalid_rows",
                     "description": "Invalid rows count",
                     "unit": "rows",
                     "type": "counter",
                     "value": metrics.invalid_rows,
                 },
                 {
-                    "name": "data_guardian.error_rate",
+                    "name": "puv.error_rate",
                     "description": "Error rate (0.0-1.0)",
                     "unit": "1",
                     "type": "gauge",
                     "value": metrics.error_rate,
                 },
                 {
-                    "name": "data_guardian.processing_time",
+                    "name": "puv.processing_time",
                     "description": "Processing time in seconds",
                     "unit": "s",
                     "type": "gauge",
                     "value": metrics.processing_time,
                 },
                 {
-                    "name": "data_guardian.chunks_processed",
+                    "name": "puv.chunks_processed",
                     "description": "Total chunks processed",
                     "unit": "chunks",
                     "type": "counter",
@@ -649,7 +649,7 @@ HTML_TEMPLATE = """
         {% endif %}
 
         <div class="footer">
-            <p>Generated by Data Guardian v0.1.0 on {{ timestamp }}</p>
+            <p>Generated by pandera-unified-validator v0.1.0 on {{ timestamp }}</p>
             <div class="export-buttons">
                 <a href="#" class="btn" onclick="alert('Export to CSV functionality would be implemented here')">Export to CSV</a>
                 <a href="#" class="btn" onclick="alert('Export to Excel functionality would be implemented here')">Export to Excel</a>
