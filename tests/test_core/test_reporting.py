@@ -231,12 +231,12 @@ class TestMetricsExporter:
         """Test Prometheus format export."""
         output = MetricsExporter.to_prometheus(validation_metrics)
 
-        assert "data_guardian_total_rows 2000" in output
-        assert "data_guardian_valid_rows 1850" in output
-        assert "data_guardian_invalid_rows 150" in output
-        assert "data_guardian_error_rate" in output
-        assert "data_guardian_processing_time_seconds 12.345" in output
-        assert "data_guardian_chunks_processed 2" in output
+        assert "puv_total_rows 2000" in output
+        assert "puv_valid_rows 1850" in output
+        assert "puv_invalid_rows 150" in output
+        assert "puv_error_rate" in output
+        assert "puv_processing_time_seconds 12.345" in output
+        assert "puv_chunks_processed 2" in output
         assert "# HELP" in output
         assert "# TYPE" in output
 
@@ -248,14 +248,14 @@ class TestMetricsExporter:
         output = MetricsExporter.to_prometheus(validation_metrics)
 
         # Should include common errors as labeled metrics
-        assert "data_guardian_common_errors" in output
+        assert "puv_common_errors" in output
 
     def test_to_opentelemetry(self, validation_metrics: ValidationMetrics) -> None:
         """Test OpenTelemetry format export."""
         output = MetricsExporter.to_opentelemetry(validation_metrics)
 
         assert isinstance(output, dict)
-        assert output["resource"]["service.name"] == "data-guardian"
+        assert output["resource"]["service.name"] == "pandera-unified-validator"
         assert output["resource"]["service.version"] == "0.1.0"
 
         metrics = output["metrics"]
@@ -263,12 +263,12 @@ class TestMetricsExporter:
 
         # Verify metric names and values
         metric_names = {m["name"] for m in metrics}
-        assert "data_guardian.total_rows" in metric_names
-        assert "data_guardian.valid_rows" in metric_names
-        assert "data_guardian.invalid_rows" in metric_names
-        assert "data_guardian.error_rate" in metric_names
-        assert "data_guardian.processing_time" in metric_names
-        assert "data_guardian.chunks_processed" in metric_names
+        assert "puv.total_rows" in metric_names
+        assert "puv.valid_rows" in metric_names
+        assert "puv.invalid_rows" in metric_names
+        assert "puv.error_rate" in metric_names
+        assert "puv.processing_time" in metric_names
+        assert "puv.chunks_processed" in metric_names
 
         # Check attributes
         assert "early_terminated" in output["attributes"]
