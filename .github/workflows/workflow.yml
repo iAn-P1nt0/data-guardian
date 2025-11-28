@@ -127,8 +127,8 @@ jobs:
 
       - name: Run CLI help
         run: |
-          data-guardian --help
-          python -m data_guardian --help
+          puv --help
+          python -m pandera_unified_validator --help
 
       - name: Run reporting demo
         run: python examples/reporting_demo.py

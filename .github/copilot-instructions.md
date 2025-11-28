@@ -1,4 +1,4 @@
-# Custom Instructions for data-guardian Development
+# Custom Instructions for pandera-unified-validator Development
 
 - Use Python 3.10+ syntax (match-case, | for unions, new type hint syntax)
 - Prefer composition over inheritance
