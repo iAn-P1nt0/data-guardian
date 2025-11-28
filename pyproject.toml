@@ -100,6 +100,8 @@ namespace_packages = true
 minversion = "7.0"
 addopts = "-ra --strict-markers"
 testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
 
 [tool.coverage.run]
 source = ["data_guardian"]
