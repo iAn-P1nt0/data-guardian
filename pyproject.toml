@@ -19,6 +19,8 @@ dependencies = [
   "polars>=0.20",
   "rich>=13.0",
   "jinja2>=3.1",
+  "typer>=0.9.0",
+  "structlog>=23.1.0",
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -37,6 +39,9 @@ classifiers = [
 Homepage = "https://github.com/ianpinto/data-guardian"
 Repository = "https://github.com/ianpinto/data-guardian"
 Documentation = "https://github.com/ianpinto/data-guardian/tree/main/docs"
+
+[project.scripts]
+data-guardian = "data_guardian.__main__:app"
 
 [project.optional-dependencies]
 dev = [

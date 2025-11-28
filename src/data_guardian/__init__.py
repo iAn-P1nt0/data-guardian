@@ -31,6 +31,7 @@ from .profiling import (
     QualityScore,
     infer_constraints_from_profile,
 )
+from .utils.logging_config import configure_logging, get_logger
 from .utils.reporting import (
     MetricsExporter,
     ValidationReport,
@@ -64,6 +65,8 @@ __all__ = [
     "infer_constraints_from_profile",
     "validate_csv_streaming",
     "validate_csv_streaming_sync",
+    "configure_logging",
+    "get_logger",
 ]
 
 __version__ = "0.1.0"
