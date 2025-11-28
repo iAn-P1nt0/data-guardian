@@ -1,6 +1,6 @@
-# Contributing to data-guardian
+# Contributing to pandera-unified-validator
 
-Thank you for your interest in contributing to data-guardian! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to pandera-unified-validator! This document provides guidelines and instructions for contributing to the project.
 
 ## Table of Contents
 
@@ -22,13 +22,13 @@ By participating in this project, you agree to maintain a respectful and inclusi
 1. Fork the repository on GitHub
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/data-guardian.git
-   cd data-guardian
+   git clone https://github.com/YOUR-USERNAME/pandera-unified-validator.git
+   cd pandera-unified-validator
    ```
 
 3. Add the upstream repository:
    ```bash
-   git remote add upstream https://github.com/ianpinto/data-guardian.git
+   git remote add upstream https://github.com/ianpinto/pandera-unified-validator.git
    ```
 
 ## Development Setup
@@ -130,7 +130,7 @@ pytest tests/ -v
 Run tests with coverage:
 
 ```bash
-pytest tests/ --cov=src/data_guardian --cov-report=term-missing
+pytest tests/ --cov=src/pandera_unified_validator --cov-report=term-missing
 ```
 
 Run specific test files:
@@ -171,7 +171,7 @@ Example test structure:
 
 ```python
 import pytest
-from data_guardian import SchemaBuilder, UnifiedValidator
+from pandera_unified_validator import SchemaBuilder, UnifiedValidator
 
 class TestNewFeature:
     """Tests for the new feature."""
@@ -326,7 +326,7 @@ When reporting bugs, please include:
 4. **Actual Behavior**: What actually happened
 5. **Environment**:
    - Python version
-   - data-guardian version
+   - pandera-unified-validator version
    - Operating system
    - Relevant package versions
 
@@ -339,7 +339,7 @@ Validation fails when using Polars DataFrame with null values
 ## Steps to Reproduce
 \`\`\`python
 import polars as pl
-from data_guardian import SchemaBuilder, UnifiedValidator
+from pandera_unified_validator import SchemaBuilder, UnifiedValidator
 
 schema = SchemaBuilder("test").add_column("value", int, nullable=True).build()
 data = pl.DataFrame({"value": [1, None, 3]})
@@ -355,7 +355,7 @@ ValidationError: ...
 
 ## Environment
 - Python 3.12
-- data-guardian 0.1.0
+- pandera-unified-validator 0.1.0
 - Polars 0.20.0
 - macOS 14.0
 ```
@@ -408,9 +408,9 @@ pytest tests/ --profile-svg
 If you have questions:
 
 1. Check the [documentation](docs/user_guide.md)
-2. Search [existing issues](https://github.com/ianpinto/data-guardian/issues)
-3. Open a new [discussion](https://github.com/ianpinto/data-guardian/discussions)
+2. Search [existing issues](https://github.com/ianpinto/pandera-unified-validator/issues)
+3. Open a new [discussion](https://github.com/ianpinto/pandera-unified-validator/discussions)
 
 ## License
 
-By contributing to data-guardian, you agree that your contributions will be licensed under the MIT License.
+By contributing to pandera-unified-validator, you agree that your contributions will be licensed under the MIT License.

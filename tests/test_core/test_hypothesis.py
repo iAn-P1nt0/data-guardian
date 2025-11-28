@@ -1,4 +1,4 @@
-"""Property-based tests using hypothesis for data-guardian."""
+"""Property-based tests using hypothesis for pandera-unified-validator."""
 
 from __future__ import annotations
 

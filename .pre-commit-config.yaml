@@ -1,4 +1,4 @@
-# Pre-commit hooks for data-guardian
+# Pre-commit hooks for pandera-unified-validator
 # See https://pre-commit.com for more information
 
 repos:

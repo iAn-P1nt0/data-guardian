@@ -1,4 +1,4 @@
-"""Profiling utilities for data_guardian."""
+"""Profiling utilities for pandera_unified_validator."""
 
 from .profiler import (
     ComparisonReport,

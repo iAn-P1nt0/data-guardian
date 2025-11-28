@@ -1,4 +1,0 @@
-# file: /Users/ianpinto/Documents/projects/ipgthb/py/data-guardian/src/data_guardian/core/schema.py
-# hypothesis_version: 6.148.3
-
-[0.5, 'SchemaBuilder', 'UnifiedSchema', 'ValidationSchema', '__args__', '__origin__', 'bool', 'columns', 'count', 'dataframe', 'datetime', 'datetime64[ns]', 'description', 'dtype', 'float', 'float64', 'ge', 'gt', 'inferred_schema', 'int', 'int64', 'isin', 'le', 'lt', 'metadata', 'name', 'nullable', 'object', 'pandera_schema', 'pattern', 'polars', 'polars-conversion', 'records', 'schema', 'shape', 'stage', 'str', 'string', 'unique', 'unnamed']

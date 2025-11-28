@@ -1,4 +1,0 @@
-# file: /Users/ianpinto/Documents/projects/ipgthb/py/data-guardian/src/data_guardian/core/validator.py
-# hypothesis_version: 6.148.3
-
-[1000, '\'"', ', ', 'Message', 'SchemaT', 'Type', 'Validation Result', 'Validation failed', 'Validation passed', 'coerce', 'col', 'column', 'error', 'field required', 'missing', 'pandas', 'polars', 'status', 'suggestion', 'type', 'warning']

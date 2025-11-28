@@ -1,4 +1,0 @@
-# file: /Users/ianpinto/Documents/projects/ipgthb/py/data-guardian/src/data_guardian/core/streaming.py
-# hypothesis_version: 6.148.3
-
-[0.0, 0.05, 100, 10000, '...', 'T', '__parse_error__', '__row__', '_asdict', '_mapping', 'chunks_processed', 'common_errors', 'database', 'early_terminated', 'error_rate', 'errors_sample', 'invalid_rows', 'is_valid', 'keys', 'metrics', 'processing_time', 'r', 'schema_name', 'source', 'stream', 'total_rows', 'utf-8', 'valid_rows']

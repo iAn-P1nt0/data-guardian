@@ -1,4 +1,4 @@
-"""Core validation primitives for data_guardian."""
+"""Core validation primitives for pandera_unified_validator."""
 
 from .schema import (
     ColumnSpec,

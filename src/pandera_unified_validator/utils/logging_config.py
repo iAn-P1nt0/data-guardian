@@ -1,4 +1,4 @@
-"""Logging configuration for data-guardian."""
+"""Logging configuration for pandera-unified-validator."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ def configure_logging(
     include_timestamp: bool = True,
 ) -> None:
     """
-    Configure structured logging for data-guardian.
+    Configure structured logging for pandera-unified-validator.
 
     Args:
         level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -23,7 +23,7 @@ def configure_logging(
         include_timestamp: Include timestamps in log output
 
     Example:
-        >>> from data_guardian.utils.logging_config import configure_logging
+        >>> from pandera_unified_validator.utils.logging_config import configure_logging
         >>> configure_logging(level="DEBUG", json_logs=False)
     """
     # Convert string level to logging constant

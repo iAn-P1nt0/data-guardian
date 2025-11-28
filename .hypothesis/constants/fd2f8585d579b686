@@ -1,4 +1,0 @@
-# file: /Users/ianpinto/Documents/projects/ipgthb/py/data-guardian/src/data_guardian/backends/polars_backend.py
-# hypothesis_version: 6.148.3
-
-['Column missing', 'Validation failed', '__dg_row__', 'check', 'failure_case', 'index', 'polars', 'unknown']

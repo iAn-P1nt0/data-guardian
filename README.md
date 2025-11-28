@@ -217,7 +217,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you use pandera-unified-validator in your research or production systems, please cite:
 
 ```bibtex
-@software{data_guardian,
+@software{pandera_unified_validator,
   title = {pandera-unified-validator: Advanced data validation library},
   author = {Ian Pinto},
   year = {2024},
