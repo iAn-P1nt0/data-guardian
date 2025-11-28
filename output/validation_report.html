@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Validation Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: #ef4444;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: #f9fafb;
+        }
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .metric-card h3 {
+            color: #6b7280;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .metric-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        .metric-card.errors .value { color: #ef4444; }
+        .metric-card.warnings .value { color: #f59e0b; }
+        .metric-card.suggestions .value { color: #10b981; }
+        .section {
+            padding: 40px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .section h2 {
+            color: #1f2937;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+        tr:hover {
+            background: #f9fafb;
+        }
+        .warning-list {
+            list-style: none;
+            padding: 0;
+        }
+        .warning-list li {
+            padding: 15px;
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .suggestion-item {
+            padding: 15px;
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .suggestion-item strong {
+            color: #065f46;
+        }
+        .footer {
+            padding: 20px 40px;
+            background: #f9fafb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        .export-buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 5px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>User Data Validation Report</h1>
+            <div class="status-badge">
+                ✗ INVALID
+            </div>
+        </div>
+
+        <div class="summary">
+            <div class="metric-card errors">
+                <h3>Total Errors</h3>
+                <div class="value">5</div>
+            </div>
+            <div class="metric-card warnings">
+                <h3>Total Warnings</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="metric-card suggestions">
+                <h3>Auto-Fix Suggestions</h3>
+                <div class="value">5</div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>Error Distribution by Column</h2>
+            <div class="chart-container">
+                <canvas id="errorChart"></canvas>
+            </div>
+        </div>
+        
+
+        
+        <div class="section">
+            <h2>Most Common Errors</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Error Message</th>
+                        <th style="text-align: right; width: 100px;">Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>series 'id' contains duplicate values:
+1    2
+2    2
+Name: id, dtype: int64</td>
+                        <td style="text-align: right;">1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>4 validation errors for user_schemaModel
+id
+  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-1, input_type=int]
+   </td>
+                        <td style="text-align: right;">1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>3 validation errors for user_schemaModel
+email
+  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' [type=string_pattern_m</td>
+                        <td style="text-align: right;">1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>2 validation errors for user_schemaModel
+email
+  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' [type=string_pattern_m</td>
+                        <td style="text-align: right;">1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>1 validation error for user_schemaModel
+email
+  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' [type=string_pattern_mi</td>
+                        <td style="text-align: right;">1</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+
+        
+
+        
+        <div class="section">
+            <h2>Auto-Fix Suggestions</h2>
+            
+            <div class="suggestion-item">
+                <strong>id</strong>: Coerce column 'id' to the expected dtype
+            </div>
+            
+            <div class="suggestion-item">
+                <strong>id</strong>: Coerce column 'id' to the expected dtype
+            </div>
+            
+            <div class="suggestion-item">
+                <strong>email</strong>: Coerce column 'email' to the expected dtype
+            </div>
+            
+            <div class="suggestion-item">
+                <strong>email</strong>: Coerce column 'email' to the expected dtype
+            </div>
+            
+            <div class="suggestion-item">
+                <strong>email</strong>: Coerce column 'email' to the expected dtype
+            </div>
+            
+        </div>
+        
+
+        <div class="footer">
+            <p>Generated by Data Guardian v0.1.0 on 2025-11-29T02:37:34.165654</p>
+            <div class="export-buttons">
+                <a href="#" class="btn" onclick="alert('Export to CSV functionality would be implemented here')">Export to CSV</a>
+                <a href="#" class="btn" onclick="alert('Export to Excel functionality would be implemented here')">Export to Excel</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const ctx = document.getElementById('errorChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Unknown"],
+                datasets: [{
+                    label: 'Error Count',
+                    data: [5],
+                    backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Errors by Column',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "is_valid": false,
+  "summary": {
+    "total_errors": 5,
+    "total_warnings": 0,
+    "total_suggestions": 5
+  },
+  "errors": [
+    {
+      "message": "series 'id' contains duplicate values:\n1    2\n2    2\nName: id, dtype: int64",
+      "row": null,
+      "column": null,
+      "context": {
+        "stage": "records",
+        "count": 5,
+        "backend": "pandas",
+        "rows": 5
+      }
+    },
+    {
+      "message": "4 validation errors for user_schemaModel\nid\n  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-1, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.12/v/greater_than_equal\nemail\n  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$' [type=string_pattern_mismatch, input_value='invalid', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch\nage\n  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-5, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.12/v/greater_than_equal\nscore\n  Input should be greater than or equal to 0 [type=greater_than_equal, input_value=-10.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/greater_than_equal",
+      "row": null,
+      "column": null,
+      "context": {
+        "stage": "records",
+        "count": 5,
+        "backend": "pandas",
+        "rows": 5
+      }
+    },
+    {
+      "message": "3 validation errors for user_schemaModel\nemail\n  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$' [type=string_pattern_mismatch, input_value='no-at-sign', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch\nage\n  Input should be less than or equal to 120 [type=less_than_equal, input_value=150, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.12/v/less_than_equal\nscore\n  Input should be less than or equal to 100 [type=less_than_equal, input_value=150.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/less_than_equal",
+      "row": null,
+      "column": null,
+      "context": {
+        "stage": "records",
+        "count": 5,
+        "backend": "pandas",
+        "rows": 5
+      }
+    },
+    {
+      "message": "2 validation errors for user_schemaModel\nemail\n  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$' [type=string_pattern_mismatch, input_value='bad@', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch\nage\n  Input should be less than or equal to 120 [type=less_than_equal, input_value=200, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.12/v/less_than_equal",
+      "row": null,
+      "column": null,
+      "context": {
+        "stage": "records",
+        "count": 5,
+        "backend": "pandas",
+        "rows": 5
+      }
+    },
+    {
+      "message": "1 validation error for user_schemaModel\nemail\n  String should match pattern '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$' [type=string_pattern_mismatch, input_value='x@y.z', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch",
+      "row": null,
+      "column": null,
+      "context": {
+        "stage": "records",
+        "count": 5,
+        "backend": "pandas",
+        "rows": 5
+      }
+    }
+  ],
+  "warnings": [],
+  "suggestions": [
+    {
+      "column": "id",
+      "description": "Coerce column 'id' to the expected dtype",
+      "has_fixer": true
+    },
+    {
+      "column": "id",
+      "description": "Coerce column 'id' to the expected dtype",
+      "has_fixer": true
+    },
+    {
+      "column": "email",
+      "description": "Coerce column 'email' to the expected dtype",
+      "has_fixer": true
+    },
+    {
+      "column": "email",
+      "description": "Coerce column 'email' to the expected dtype",
+      "has_fixer": true
+    },
+    {
+      "column": "email",
+      "description": "Coerce column 'email' to the expected dtype",
+      "has_fixer": true
+    }
+  ],
+  "metadata": {
+    "stage": "records",
+    "count": 5,
+    "backend": "pandas",
+    "rows": 5
+  },
+  "timestamp": "2025-11-29T02:37:34.168397"
+}
