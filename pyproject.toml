@@ -3,7 +3,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "data-guardian"
+name = "pandera-unified-validator"
 version = "0.1.0"
 description = "Advanced data validation library unifying Pydantic and Pandera with multi-backend support"
 readme = "README.md"
@@ -36,12 +36,12 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ianpinto/data-guardian"
-Repository = "https://github.com/ianpinto/data-guardian"
-Documentation = "https://github.com/ianpinto/data-guardian/tree/main/docs"
+Homepage = "https://github.com/ianpinto/pandera-unified-validator"
+Repository = "https://github.com/ianpinto/pandera-unified-validator"
+Documentation = "https://github.com/ianpinto/pandera-unified-validator/tree/main/docs"
 
 [project.scripts]
-data-guardian = "data_guardian.__main__:app"
+puv = "pandera_unified_validator.__main__:app"
 
 [project.optional-dependencies]
 dev = [
@@ -118,7 +118,7 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.coverage.run]
-source = ["data_guardian"]
+source = ["pandera_unified_validator"]
 branch = true
 
 [tool.coverage.report]
