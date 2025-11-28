@@ -536,7 +536,7 @@ class SchemaConverter:
             if infer_constraints and python_type == str:
                 unique_count = series.nunique()
                 total_count = len(series)
-                if unique_count < min(10, total_count * 0.1):
+                if unique_count <= min(10, max(1, int(total_count * 0.5))):
                     constraints["isin"] = series.dropna().unique().tolist()
 
             columns[col_name] = ColumnSpec(

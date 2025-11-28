@@ -145,8 +145,8 @@ class TestSchemaConverter:
 
     def test_infer_with_constraints(self) -> None:
         df = pd.DataFrame({
-            "score": [10, 20, 30],
-            "category": ["A", "A", "B"],
+            "score": [10, 20, 30, 40, 50],
+            "category": ["A", "A", "B", "B", "A"],
         })
 
         schema = SchemaConverter.infer_from_dataframe(
@@ -156,7 +156,7 @@ class TestSchemaConverter:
         )
 
         assert schema.columns["score"].ge == 10.0
-        assert schema.columns["score"].le == 30.0
+        assert schema.columns["score"].le == 50.0
         assert set(schema.columns["category"].isin or []) == {"A", "B"}
 
 
