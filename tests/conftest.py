@@ -7,14 +7,14 @@ import polars as pl
 import pytest
 from pydantic import BaseModel, Field
 
-from data_guardian import (
+from pandera_unified_validator import (
     DataGuardianValidator,
     SchemaBuilder,
     UnifiedSchema,
     UnifiedValidator,
     ValidationSchema,
 )
-from data_guardian.backends import PandasBackend, PolarsBackend
+from pandera_unified_validator.backends import PandasBackend, PolarsBackend
 
 
 # Email regex pattern for validation

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from data_guardian import (
+from pandera_unified_validator import (
     DataProfiler,
     ProfileReport,
     QualityScore,

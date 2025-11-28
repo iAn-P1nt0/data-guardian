@@ -8,7 +8,7 @@ from typing import AsyncIterator, Dict, Any, List
 import pandas as pd
 import pytest
 
-from data_guardian import (
+from pandera_unified_validator import (
     SchemaBuilder,
     StreamingResult,
     StreamingValidator,

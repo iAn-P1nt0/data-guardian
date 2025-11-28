@@ -5,7 +5,7 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from data_guardian import SchemaBuilder, UnifiedValidator
+from pandera_unified_validator import SchemaBuilder, UnifiedValidator
 
 
 @pytest.fixture()
@@ -203,7 +203,7 @@ class TestReportingBenchmarks:
         unified_validator: UnifiedValidator,
     ) -> None:
         """Benchmark reporter DataFrame conversion."""
-        from data_guardian.utils.reporting import ValidationReporter
+        from pandera_unified_validator.utils.reporting import ValidationReporter
 
         result = unified_validator.validate(invalid_sample_dataframe)
         reporter = ValidationReporter(result)
@@ -216,8 +216,8 @@ class TestReportingBenchmarks:
         benchmark: pytest.FixtureRequest,
     ) -> None:
         """Benchmark Prometheus metrics export."""
-        from data_guardian.core.streaming import ValidationMetrics
-        from data_guardian.utils.reporting import MetricsExporter
+        from pandera_unified_validator.core.streaming import ValidationMetrics
+        from pandera_unified_validator.utils.reporting import MetricsExporter
 
         metrics = ValidationMetrics()
         metrics.update(9000, 1000, ["Error 1"] * 100)
@@ -230,8 +230,8 @@ class TestReportingBenchmarks:
         benchmark: pytest.FixtureRequest,
     ) -> None:
         """Benchmark OpenTelemetry metrics export."""
-        from data_guardian.core.streaming import ValidationMetrics
-        from data_guardian.utils.reporting import MetricsExporter
+        from pandera_unified_validator.core.streaming import ValidationMetrics
+        from pandera_unified_validator.utils.reporting import MetricsExporter
 
         metrics = ValidationMetrics()
         metrics.update(9000, 1000, ["Error 1"] * 100)

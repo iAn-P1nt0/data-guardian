@@ -5,8 +5,8 @@ import polars as pl
 import pytest
 from pydantic import BaseModel, Field
 
-from data_guardian import UnifiedValidator
-from data_guardian.core.validator import ValidationFailedError
+from pandera_unified_validator import UnifiedValidator
+from pandera_unified_validator.core.validator import ValidationFailedError
 
 
 class Person(BaseModel):

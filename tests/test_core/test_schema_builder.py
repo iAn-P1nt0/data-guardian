@@ -4,7 +4,7 @@ import pandas as pd
 import pytest
 from pydantic import BaseModel
 
-from data_guardian import SchemaBuilder, SchemaConverter, UnifiedSchema, UnifiedValidator
+from pandera_unified_validator import SchemaBuilder, SchemaConverter, UnifiedSchema, UnifiedValidator
 
 
 class TestSchemaBuilder:

@@ -5,8 +5,8 @@ from pandera import Column, Check, DataFrameSchema
 from pydantic import BaseModel
 import pytest
 
-from data_guardian import DataGuardianValidator, ValidationSchema
-from data_guardian.backends import PandasBackend
+from pandera_unified_validator import DataGuardianValidator, ValidationSchema
+from pandera_unified_validator.backends import PandasBackend
 
 
 class Order(BaseModel):

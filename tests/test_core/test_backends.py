@@ -6,7 +6,7 @@ import pandas as pd
 import polars as pl
 from pandera import Check
 
-from data_guardian.backends import (
+from pandera_unified_validator.backends import (
     BackendFactory,
     ColumnValidationError,
     PandasBackend,

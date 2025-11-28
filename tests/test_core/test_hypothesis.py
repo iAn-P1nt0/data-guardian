@@ -8,7 +8,7 @@ from hypothesis import given, settings, strategies as st
 from hypothesis.extra.pandas import column, data_frames
 from pydantic import BaseModel, Field
 
-from data_guardian import SchemaBuilder, UnifiedValidator, ValidationResult
+from pandera_unified_validator import SchemaBuilder, UnifiedValidator, ValidationResult
 
 
 class SimpleRecord(BaseModel):

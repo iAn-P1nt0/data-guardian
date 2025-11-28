@@ -9,10 +9,10 @@ import pandas as pd
 import pytest
 from rich.console import Console
 
-from data_guardian import UnifiedValidator, ValidationResult
-from data_guardian.core.streaming import ValidationMetrics
-from data_guardian.core.validator import AutoFixSuggestion, ValidationErrorDetail
-from data_guardian.utils.reporting import MetricsExporter, ValidationReporter
+from pandera_unified_validator import UnifiedValidator, ValidationResult
+from pandera_unified_validator.core.streaming import ValidationMetrics
+from pandera_unified_validator.core.validator import AutoFixSuggestion, ValidationErrorDetail
+from pandera_unified_validator.utils.reporting import MetricsExporter, ValidationReporter
 
 
 @pytest.fixture()
