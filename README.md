@@ -1,10 +1,10 @@
-# data-guardian
+# pandera-unified-validator
 
-[![PyPI version](https://badge.fury.io/py/data-guardian.svg)](https://badge.fury.io/py/data-guardian)
+[![PyPI version](https://badge.fury.io/py/pandera-unified-validator.svg)](https://badge.fury.io/py/pandera-unified-validator)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI Status](https://github.com/ianpinto/data-guardian/workflows/CI/badge.svg)](https://github.com/ianpinto/data-guardian/actions)
-[![Coverage](https://codecov.io/gh/ianpinto/data-guardian/branch/main/graph/badge.svg)](https://codecov.io/gh/ianpinto/data-guardian)
+[![CI Status](https://github.com/ianpinto/pandera-unified-validator/workflows/CI/badge.svg)](https://github.com/ianpinto/pandera-unified-validator/actions)
+[![Coverage](https://codecov.io/gh/ianpinto/pandera-unified-validator/branch/main/graph/badge.svg)](https://codecov.io/gh/ianpinto/pandera-unified-validator)
 
 **Advanced data validation library unifying Pydantic and Pandera with multi-backend support for pandas and Polars.**
 
@@ -22,23 +22,23 @@
 ## Installation
 
 ```bash
-pip install data-guardian
+pip install pandera-unified-validator
 ```
 
 With optional dependencies:
 
 ```bash
 # For Parquet support
-pip install data-guardian[parquet]
+pip install pandera-unified-validator[parquet]
 
 # For database validation
-pip install data-guardian[database]
+pip install pandera-unified-validator[database]
 
 # For data profiling
-pip install data-guardian[profiling]
+pip install pandera-unified-validator[profiling]
 
 # All features
-pip install data-guardian[all]
+pip install pandera-unified-validator[all]
 ```
 
 ## Quick Start (30 seconds)
@@ -86,7 +86,7 @@ reporter.to_json("report.json")     # JSON export
 
 ## Comparison with Alternatives
 
-| Feature | data-guardian | Pydantic | Pandera |
+| Feature | pandera-unified-validator | Pydantic | Pandera |
 |---------|---------------|----------|---------|
 | Record validation | ✅ | ✅ | ❌ |
 | DataFrame validation | ✅ | ❌ | ✅ |
@@ -163,15 +163,15 @@ print(f"Processing time: {result.metrics.processing_time:.2f}s")
 
 - **[User Guide](docs/user_guide.md)** - Complete tutorial and API reference
 - **[Examples](docs/examples/)** - 9 practical examples covering common use cases
-- **[API Documentation](https://data-guardian.readthedocs.io/)** - Auto-generated API docs
+- **[API Documentation](https://pandera-unified-validator.readthedocs.io/)** - Auto-generated API docs
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
 
 ## Development
 
 ```bash
 # Clone repository
-git clone https://github.com/ianpinto/data-guardian.git
-cd data-guardian
+git clone https://github.com/ianpinto/pandera-unified-validator.git
+cd pandera-unified-validator
 
 # Install development dependencies
 pip install -e ".[dev]"
@@ -210,17 +210,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Built on top of [Pydantic](https://pydantic-docs.helpmanual.io/) and [Pandera](https://pandera.readthedocs.io/)
 - Inspired by the need for unified data validation in production data pipelines
-- Thanks to all [contributors](https://github.com/ianpinto/data-guardian/graphs/contributors)
+- Thanks to all [contributors](https://github.com/ianpinto/pandera-unified-validator/graphs/contributors)
 
 ## Citation
 
-If you use data-guardian in your research or production systems, please cite:
+If you use pandera-unified-validator in your research or production systems, please cite:
 
 ```bibtex
 @software{data_guardian,
-  title = {data-guardian: Advanced data validation library},
+  title = {pandera-unified-validator: Advanced data validation library},
   author = {Ian Pinto},
   year = {2024},
-  url = {https://github.com/ianpinto/data-guardian}
+  url = {https://github.com/ianpinto/pandera-unified-validator}
 }
 ```
