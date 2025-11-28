@@ -70,4 +70,4 @@ class TestPolarsBackend:
         backend = PolarsBackend()
 
         dtype = backend.get_column_dtype(df, "name")
-        assert "Utf8" in dtype
+        assert "Utf8" in dtype or "String" in dtype

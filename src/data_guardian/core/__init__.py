@@ -16,17 +16,14 @@ from .streaming import (
 )
 from .validator import (
     AutoFixSuggestion,
-    Backend,
     DataGuardianValidator,
     UnifiedValidator,
-    ValidationBackend,
     ValidationErrorDetail,
     ValidationResult,
 )
 
 __all__ = [
     "AutoFixSuggestion",
-    "Backend",
     "ColumnSpec",
     "DataGuardianValidator",
     "SchemaBuilder",
@@ -35,7 +32,6 @@ __all__ = [
     "StreamingValidator",
     "UnifiedSchema",
     "UnifiedValidator",
-    "ValidationBackend",
     "ValidationMetrics",
     "ValidationSchema",
     "ValidationErrorDetail",

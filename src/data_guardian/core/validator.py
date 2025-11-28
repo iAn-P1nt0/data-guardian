@@ -284,27 +284,13 @@ class UnifiedValidator(Generic[SchemaT]):
             table.add_row("suggestion", suggestion.description)
         console.print(table)
 
-
-@runtime_checkable
-class ValidationBackend(Protocol[FrameT]):
-    """Legacy protocol implemented by concrete dataframe backends."""
-
-    name: str
-
-    def supports(self, data: object) -> bool:
-        """Return True when the backend can handle the provided data container."""
-
-    def validate(self, data: FrameT, schema: ValidationSchema) -> ValidationReport:
-        """Validate ``data`` using ``schema`` and return a structured report."""
-
-
 class DataGuardianValidator:
     """Historical validator retained for backwards compatibility."""
 
     def __init__(self) -> None:
-        self._backends: Dict[str, ValidationBackend[Any]] = {}
+        self._backends: Dict[str, ValidationBackend] = {}
 
-    def register_backend(self, backend: ValidationBackend[Any], *, override: bool = False) -> None:
+    def register_backend(self, backend: ValidationBackend, *, override: bool = False) -> None:
         if not override and backend.name in self._backends:
             raise ValueError(f"Backend '{backend.name}' already registered")
         self._backends[backend.name] = backend
@@ -322,7 +308,7 @@ class DataGuardianValidator:
         selected = self._resolve_backend(data, backend)
         return selected.validate(data, schema)
 
-    def _resolve_backend(self, data: object, name: Optional[str]) -> ValidationBackend[Any]:
+    def _resolve_backend(self, data: object, name: Optional[str]) -> ValidationBackend:
         if name is not None:
             try:
                 return self._backends[name]

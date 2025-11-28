@@ -54,7 +54,9 @@ class PolarsBackend(ValidationBackend):
         return []
 
     def get_column_dtype(self, df: pl.DataFrame, column: str) -> str:
-        return str(df.schema[column]) if column in df.schema else "unknown"
+        if column not in df.columns:
+            return "unknown"
+        return str(df.get_column(column).dtype)
 
     def filter_invalid_rows(
         self,
@@ -66,8 +68,8 @@ class PolarsBackend(ValidationBackend):
             empty = df.head(0)
             return df.clone(), empty
 
-        invalid = df.take(invalid_indices)
-        helper = df.with_row_count("__dg_row__")
+        helper = df.with_row_index("__dg_row__")
+        invalid = helper.filter(pl.col("__dg_row__").is_in(invalid_indices)).drop("__dg_row__")
         valid = helper.filter(~pl.col("__dg_row__").is_in(invalid_indices)).drop("__dg_row__")
         return valid, invalid
 
